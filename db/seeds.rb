@@ -10,3 +10,7 @@
 @movie2 = @studio1.movies.create!(title: "The Joker", creation_year: "2015", genre: "Comedy")
 @studio2 = Studio.create!(name: "Studios Tampa", location: "Armenia Av")
 @movie3 = @studio2.movies.create!(title: "Minions", creation_year: "2022", genre: "Comedy")
+@actor1 = Actor.create!(name: "Leonardo DiCaprio", age: 46)
+@actor2 = Actor.create!(name: "Kate Winslet", age: 45)
+@movie_actor_1 = MovieActor.create!(movie_id: @movie1.id, actor_id: @actor1.id)
+@movie_actor_2 = MovieActor.create!(movie_id: @movie1.id, actor_id: @actor2.id)
