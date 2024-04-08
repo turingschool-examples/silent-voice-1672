@@ -1,0 +1,19 @@
+<div class="page-title">
+  Studios Index Page
+</div>
+
+<div class="list">
+  <% @studios.each do |studio| %>
+    <div class="list-item" id="studio-<%= studio.id %>">
+      <div class="list-header"><%= studio.name %></div>
+      <div class="list-attribute">Location: <%= studio.location %></div>
+      <div class="nested-list">
+        <% studio.movies.each do |movie| %>
+          <div class="nested-list-header"><%= movie.title %></div>
+          <div class="nested-list-property">Created in <%= movie.creation_year %></div>
+          <div class="nested-list-property">Genre: <%= movie.genre %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
