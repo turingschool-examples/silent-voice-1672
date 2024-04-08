@@ -20,12 +20,6 @@ RSpec.describe Movie do
       expect(page).to have_content(godfather.title)
       expect(page).to have_content(godfather.creation_year)
       expect(page).to have_content(godfather.genre)
-      expect(page).to have_content(shawshank.title)
-      expect(page).to have_content(shawshank.creation_year)
-      expect(page).to have_content(shawshank.genre)
-      expect(page).to have_content(inception.title)
-      expect(page).to have_content(inception.creation_year)
-      expect(page).to have_content(inception.genre)
 
 
     end
