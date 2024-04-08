@@ -7,9 +7,9 @@ RSpec.describe Studio do
       warner = Studio.create(name: "Warner Bros.", location: "Burbank")
       universal = Studio.create(name: "Universal Pictures", location: "Universal City")
 
-      godfather = Movie.create(title: "The Godfather", creation_year: "1972", genre: "Crime", studio_id: 1)
-      shawshank = Movie.create(title: "The Shawshank Redemption", creation_year: "1994", genre: "Drama", studio_id: 2)
-      inception = Movie.create(title: "Inception", creation_year: "2010", genre: "Sci-Fi", studio_id: 3)
+      godfather = Movie.create(title: "The Godfather", creation_year: "1972", genre: "Crime", studio: paramount)
+      shawshank = Movie.create(title: "The Shawshank Redemption", creation_year: "1994", genre: "Drama", studio: warner)
+      inception = Movie.create(title: "Inception", creation_year: "2010", genre: "Sci-Fi", studio: universal)
 
       visit "/studios"
 
