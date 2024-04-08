@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Studio, type: :model do
+RSpec.describe "the studio show" do
   before(:each) do
     Studio.destroy_all
     Movie.destroy_all
@@ -25,17 +25,20 @@ RSpec.describe Studio, type: :model do
     @movie2.actors << [@actor2, @actor4]
     @movie3.actors << [@actor1, @actor4]
   end
-  
-  describe "relationships" do
-    it {should have_many(:movies)}
-    it {should have_many(:movie_actors).through(:movies)}
-    it {should have_many(:actors).through(:movie_actors)}
+
+  it "shows the studio's name and location" do
+    visit "/studios/#{@studio2.id}"
+
+    expect(page).to have_content("Studio: Universal")
+    expect(page).to have_content("Location: Florida")
   end
 
-  describe "instance methods" do
-    it "can return all distinct actors that have appeared in movies for this studio" do
-      expect(@studio1.distinct_actors).to eq [@actor1, @actor3, @actor4]
-      expect(@studio2.distinct_actors).to eq [@actor1, @actor2, @actor4]
-    end
+  it "shows a unique list of all the actors that have worked on any of this studio's movies" do
+    visit "/studios/#{@studio2.id}"
+    save_and_open_page
+    expect(page).to have_content(@actor1.name, count: 1)
+    expect(page).to have_content(@actor2.name, count: 1)
+    expect(page).to have_content(@actor4.name, count: 1)
+    expect(page).to_not have_content("Angelina Jolie")
   end
 end
