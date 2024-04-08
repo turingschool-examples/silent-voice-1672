@@ -9,5 +9,12 @@
   <p> <%= actor.age %> </p>
 <% end %>
 
-<p> Average age of all actors in <%= @movie.title %>: <%= @average_age %></p>
+<p>Average age of all actors: <%= @average_age %></p>
 
+<p> Add an Actor </p>
+
+<%= form_with url: "/movies/#{@movie.id}", method: :post, data: {turbo: false} do |form| %>
+  <%= form.label :actor_id, "Add Actor" %> <br>
+  <%= form.text_field :actor_id %> <br>
+  <%= form.submit "Submit" %> 
+<% end %>
