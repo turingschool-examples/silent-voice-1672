@@ -9,7 +9,7 @@ RSpec.describe "studios index page" do
     @new_studio.movies.create!(title: "Get Out", creation_year: "2017", genre: "horror", studio_id: 1)
     
     visit "/studios"
-    save_and_open_page
+    #save_and_open_page
 
     within "#studio_#{@new_studio.id}" do
       expect(page).to have_content("Universal Studios")
