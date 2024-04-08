@@ -27,8 +27,7 @@ RSpec.describe "the studios show page" do
       expect(page).to have_content('Location: Location 1')
 
       within '#studio_actors' do
-      # I didn't know how to test that actor name 1 didn't appear twice. Would be curious if there is a way.
-        expect(page).to have_content('Actor Name 1')
+        expect(page).to have_content('Actor Name 1', maximum: 1)
         expect(page).to have_content('Actor Name 2')
         expect(page).to have_content('Actor Name 3')
         expect(page).to have_content('Actor Name 5')
