@@ -9,12 +9,12 @@ RSpec.describe "Movies Show Page" do
     @movie2 = @studio1.movies.create!(title: "Cars", creation_year: "2004", genre: "animation") 
     @movie3 = @studio2.movies.create!(title: "King Kong", creation_year: "1990", genre: "fiction") 
 
-    @actor = @movie1.actors.create!(name: "Woody", age: 40)
-    @actor = @movie1.actors.create!(name: "Buzz", age: 39)
-    @actor = @movie1.actors.create!(name: "Mr. Patato", age: 20)
-    @actor = @movie2.actors.create!(name: "Woody", age: 40)
-    @actor = @movie2.actors.create!(name: "Lightning McQueen", age: 20)
-    @actor = @movie3.actors.create!(name: "Kong", age: 60)
+    @actor1 = @movie1.actors.create!(name: "Woody", age: 40)
+    @actor2 = @movie1.actors.create!(name: "Buzz", age: 39)
+    @actor3 = @movie1.actors.create!(name: "Mr. Patato", age: 20)
+    @actor4 = @movie2.actors.create!(name: "Woody", age: 40)
+    @actor5 = @movie2.actors.create!(name: "Lightning McQueen", age: 20)
+    @actor6 = @movie3.actors.create!(name: "Kong", age: 60)
   end
 
   describe '#US 2' do
