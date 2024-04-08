@@ -34,11 +34,12 @@ RSpec.describe "Movie Show Page", type: :feature do
       visit "/movies/#{@movie_1.id}"
       
       expect(page).to_not have_content(@actor_3.name)
-      save_and_open_page
       fill_in "Add Actor(tress) ID:", with: "#{@actor_3.id}"
       click_button "Submit Actor ID"
+      save_and_open_page
 
       expect(page).to have_content(@actor_3.name)
+      expect(page).to have_content(44.0)
     end
   end
 end

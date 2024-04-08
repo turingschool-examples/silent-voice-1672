@@ -19,4 +19,7 @@
 @actor_1 = @movie_1.actors.create!(name: 'Chloe Grace Moretz', age: 27)
 @actor_2 = @movie_1.actors.create!(name: 'Omari Hardwick', age: 50)
 @actor_3 = @movie_2.actors.create!(name: 'Michael Cera', age: 35)
-@actor_4 = @movie_5.actors.create!(name: 'Chadwick Boseman', age: 55)
+@actor_5 = @movie_2.actors.create!(name: 'Aubrey Plaza', age: 39)
+@actor_4 = @movie_5.actors.create!(name: 'Chadwick Boseman', age: 43)
+@actor_6 = @movie_2.actors.create!(name: 'Don Cheadle', age: 59)
+@actor_7 = @movie_1.actors.create!(name: 'Don Cheadle', age: 59)
