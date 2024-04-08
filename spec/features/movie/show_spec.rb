@@ -25,11 +25,7 @@ RSpec.describe "the movie show" do
     @movie2.actors << [@actor2, @actor4]
     @movie3.actors << [@actor1, @actor4]
   end
-    # As a user,
-    # When I visit a movie's show page.
-    # I see the movie's title, creation year, and genre,
-    # and a list of all its actors from youngest to oldest.
-    # And I see the average age of all of the movie's actors
+
   it "shows the movie's title, creation year, and genre" do
     visit "/movies/#{@movie1.id}"
 
@@ -64,6 +60,8 @@ RSpec.describe "the movie show" do
       expect(page).to have_content("Age: 70")
     end 
 
+    expect(page).to_not have_content("Brad Pitt")
+
     expect(@actor3.name).to appear_before(@actor1.name)
     expect(@actor1.name).to appear_before(@actor4.name)
   end
@@ -74,5 +72,34 @@ RSpec.describe "the movie show" do
     within "#average_age" do
       expect(page).to have_content("Average Age of Actors in this Movie: 60")
     end 
+  end
+
+  # As a user,
+  # When I visit a movie show page,
+  # I do not see any actors listed that are not part of the movie
+  # And I see a form to add an actor to this movie
+  # When I fill in the form with the ID of an actor that exists in the database
+  # And I click submit
+  # Then I am redirected back to that movie's show page
+  # And I see the actor's name is now listed
+  # (You do not have to test for a sad path, for example if the id submitted is not an existing actor)
+
+  it "displays a form to add an actor to this movie" do
+    visit "/movies/#{@movie1.id}"
+
+    expect(page).to have_content("Add an actor")
+    expect(page).to have_button("Submit")
+  end
+
+  it "When I input the ID of an actor in the system, I am redirected to the movie show page where I see the actor's name now listed" do
+    visit "/movies/#{@movie1.id}"
+
+    fill_in(:actor_id, with: "#{@actor2.id}")
+    click_button("Submit")
+
+    expect(page).to have_content(@actor1.name)
+    expect(page).to have_content(@actor2.name)
+    expect(page).to have_content(@actor3.name)
+    expect(page).to have_content(@actor4.name)
   end
 end
