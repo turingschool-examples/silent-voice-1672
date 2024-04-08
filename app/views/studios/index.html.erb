@@ -1,0 +1,18 @@
+<h1> Studios Index </h1>
+
+<% @all_studios.each do |studio| %>
+
+  <div id="studio_<%= studio.id %>">
+    <h2> Studio Name: <%= studio.name %> </h2>
+    <h2> Studio Location: <%= studio.location %> </h2>
+
+    <div id="studio_<%= studio.id %>_movies">
+      <% studio.movies.each do |studio_movie| %>
+        <h3> Movie Title: <%= studio_movie.title %> </h3>
+        <p> Year: <%= studio_movie.creation_year %> </p>
+        <p> Genre: <%= studio_movie.genre %> </p>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
