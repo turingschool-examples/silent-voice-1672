@@ -1,6 +1,6 @@
 require "rails_helper" 
 
-RSpec.describe "Studio show page" do
+RSpec.describe "Studio Index page" do
   before(:each) do
     @studio1 = Studio.create!(name: "Universal Studios", location: "Hollywood")
     @studio2 = Studio.create!(name: "Studio2", location: "Denver")
