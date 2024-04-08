@@ -1,10 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Movie, type: :model do
-  describe "relationships" do
-    it {should belong_to :studio}
-  end
-
+RSpec.describe "the movies show page" do
   before(:each) do
     @studio_1 = Studio.create!(name: 'Studio Name 1', location: 'Location 1')
     @studio_2 = Studio.create!(name: 'Studio Name 2', location: 'Location 2')
@@ -21,15 +17,24 @@ RSpec.describe Movie, type: :model do
     @actor_5 = @movie_4.actors.create!(name: 'Actor Name 5', age: 50)
   end
 
-  describe '#youngest_to_oldest_actors' do
-    it 'lists the movies actors from youngest to oldest' do
-      expect(@movie_1.youngest_to_oldest_actors).to eq([@actor_2, @actor_3, @actor_1])
-    end
-  end
+  describe 'User Story 2' do
+    it "lists the movies title, creation year and genre and lists all of its actors from youngest to oldest and shows an average age of all of the movie's actors" do
+      visit "/movies/#{@movie_1.id}"
 
-  describe '#average_actor_age' do
-    it 'lists the average age of the actors in a movie' do
-      expect(@movie_1.average_actor_age).to eq(32.67)
+      expect(page).to have_content('Movie Title 1')
+      expect(page).to have_content('Creation Year: 2000')
+      expect(page).to have_content('Genre: Movie Genre 1')
+
+      expect(page).to_not have_content('Movie Title 2')
+
+      within '#movie_actors' do
+        expect('Actor Name 2').to appear_before('Actor Name 3')
+        expect('Actor Name 3').to appear_before('Actor Name 1')
+
+        expect(page).to have_content('Average Actor Age: 32.67')
+
+        expect(page).to_not have_content('Actor Name 4')
+      end
     end
   end
 end
