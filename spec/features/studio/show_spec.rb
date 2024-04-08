@@ -26,11 +26,6 @@ RSpec.describe "the studio show" do
     @movie3.actors << [@actor1, @actor4]
   end
 
-  # As a user,
-  # When I visit a studio's show page
-  # I see the studio's name and location
-  # And I see a unique list of all of the actors that have worked on any of this studio's movies.
-
   it "shows the studio's name and location" do
     visit "/studios/#{@studio2.id}"
 
@@ -38,7 +33,13 @@ RSpec.describe "the studio show" do
     expect(page).to have_content("Location: Florida")
   end
 
-  it "shows a unique list of all the avctors that have worked on any of this studio's movies" do
+  it "shows a unique list of all the actors that have worked on any of this studio's movies" do
+    visit "/studios/#{@studio2.id}"
+    require 'pry'; binding.pry
 
+    expect(page).to have_content(@actor1.name, count: 1)
+    expect(page).to have_content(@actor2.name, count: 1)
+    expect(page).to have_content(@actor4.name, count: 1)
+    expect(page).to_not have_content("Angelina Jolie")
   end
 end
