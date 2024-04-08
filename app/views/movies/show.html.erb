@@ -6,8 +6,10 @@
 <h2>Actors in movie</h2>
 <section class='actors'>
   <% @movie.actors_age_order.each do |actor| %>
-    <%= actor.name %>
-    <%end%>
+  <ul>
+  <%= actor.name %>
+  </ul>
+  <%end%>
 </section>
 <h3>Movie actors average age: <%= @movie.actors_avg_age %></h3>
 

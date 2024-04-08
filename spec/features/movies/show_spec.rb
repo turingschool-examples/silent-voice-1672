@@ -14,7 +14,7 @@ RSpec.describe "Movie Show" do
     @adam = Actor.create!(name: "Adam Sandler", age: 28)
     @woman = Actor.create!(name: "Girlfriend", age: 24)
     @ace = Actor.create!(name: "Jim Carrey", age: 30)
-    @dan = Actor.create!(name: "Dan Marino", age: 33)
+    @dan = Actor.create!(name: "Dan Marino", age: 34)
 
     @movie_actor_1 = MovieActor.create!(movie_id: @water_b.id, actor_id: @adam.id)
     @movie_actor_2 = MovieActor.create!(movie_id: @water_b.id, actor_id: @woman.id)
@@ -57,6 +57,7 @@ RSpec.describe "Movie Show" do
       # And I see the actor's name is now listed
       expect(page).to have_content(@ace.name)
       # (You do not have to test for a sad path, for example if the id submitted is not an existing actor)
+      save_and_open_page
     end
   end
 end
