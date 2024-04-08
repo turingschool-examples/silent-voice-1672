@@ -37,4 +37,31 @@ RSpec.describe "the movies show page" do
       end
     end
   end
+
+  describe 'User story 3' do
+    it 'does not list actors that are not part of the movie and has a form to add an actor to this movie and when the form is filled in with an actor id and i click submit, i am redirected to the show page and see the added actor now listed' do
+      visit "/movies/#{@movie_1.id}"
+
+      within '#movie_actors' do
+        expect(page).to have_content('Actor Name 1')
+        expect(page).to have_content('Actor Name 2')
+        expect(page).to have_content('Actor Name 3')
+
+        expect(page).to_not have_content('Actor Name 4')
+
+        within '#add_movie_actor' do
+          expect(page).to have_selector('form')
+
+          fill_in(:actor_id, with: "#{@actor_4.id}")
+          click_button('Submit')
+        end
+
+        expect(current_path).to eq("/movies/#{@movie_1.id}")
+
+        expect(page).to have_content('Actor Name 4')
+
+        expect(page).to_not have_content('Actor Name 5')
+      end
+    end
+  end
 end
