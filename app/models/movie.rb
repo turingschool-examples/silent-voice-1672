@@ -3,4 +3,13 @@ class Movie < ApplicationRecord
   has_many :actor_movies
   has_many :actors, through: :actor_movies
 
+  def sort_actors_by_age
+    actors.order(age: :asc)
+  end
+
+  # rounding for easier testing
+  def average_age_of_actors
+    actors.average(:age).to_f.round(2)
+  end
+
 end
