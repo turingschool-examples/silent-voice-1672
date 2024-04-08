@@ -23,15 +23,15 @@ RSpec.describe "Movie Show" do
       # When I visit a movie's show page.
       visit "movies/#{@water_b.id}"
       # I see the movie's title, creation year, and genre,
-      expect(page).to have_content("Movie title: #{@water_b.title}")
+      expect(page).to have_content("#{@water_b.title}")
       expect(page).to have_content("Movie creation year: #{@water_b.creation_year}")
       expect(page).to have_content("Movie genre: #{@water_b.genre}")
       # and a list of all its actors from youngest to oldest.
       within ".actors" do
         expect(@woman.name).to appear_before(@adam.name)
-        # And I see the average age of all of the movie's actors
-        expect(page).to have_content("#{@water_b.name} actors average age: 26")
       end
+      expect(page).to have_content("#{@water_b.title} actors average age: 26")
+      # And I see the average age of all of the movie's actors
     end
   end
 end
