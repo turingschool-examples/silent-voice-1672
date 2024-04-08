@@ -15,9 +15,15 @@ Actor.destroy_all
 @movie1 = Movie.create(title: "Toy Story", creation_year: 1995, genre: "animation")
 @movie2 = Movie.create(title: "Up", creation_year: 2003, genre: "animation")
 @movie3 = Movie.create(title: "Die Hard", creation_year: 1990, genre: "action")
-@movie4 = Movie.create(title: "Lord of the Rings", creation_year: 2003, genre: "epic")
-@movie5 = Movie.create(title: "Batman", creation_year: 2001, genre: "superhero")
-@movie6 = Movie.create(title: "Dune 2", creation_year: 2024, genre: "epic")
 
-@studio1.movies << [@movie1, @movie5]
-@studio2.movies << [@movie2, @movie3, @movie4]
+@actor1 = Actor.create(name: "Tom Hanks", age: 60)
+@actor2 = Actor.create(name: "Brad Pitt", age: 66)
+@actor3 = Actor.create(name: "Angelina Jolie", age: 50)
+@actor4 = Actor.create(name: "Meryl Streep", age: 70)
+
+@studio1.movies << @movie1
+@studio2.movies << [@movie2, @movie3]
+
+@movie1.actors << [@actor1, @actor3]
+@movie2.actors << [@actor2, @actor4]
+@movie3.actors << [@actor1, @actor4]

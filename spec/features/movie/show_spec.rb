@@ -16,12 +16,12 @@ RSpec.describe "the movie show" do
     @actor1 = Actor.create(name: "Tom Hanks", age: 60)
     @actor2 = Actor.create(name: "Brad Pitt", age: 66)
     @actor3 = Actor.create(name: "Angelina Jolie", age: 50)
-    @actor4 = Actor.create(name: "Meryl Streep", age: 65)
+    @actor4 = Actor.create(name: "Meryl Streep", age: 70)
 
     @studio1.movies << @movie1
     @studio2.movies << [@movie2, @movie3]
 
-    @movie1.actors << [@actor1, @actor3]
+    @movie1.actors << [@actor1, @actor3, @actor4]
     @movie2.actors << [@actor2, @actor4]
     @movie3.actors << [@actor1, @actor4]
   end
@@ -47,10 +47,32 @@ RSpec.describe "the movie show" do
   end
 
   it "shows a list of all the actors in this movie from youngest to oldest" do
+    visit "/movies/#{@movie1.id}"
 
+    within "#actor-#{@actor1.id}" do
+      expect(page).to have_content("Name: Tom Hanks")
+      expect(page).to have_content("Age: 60")
+    end 
+
+    within "#actor-#{@actor3.id}" do
+      expect(page).to have_content("Name: Angelina Jolie")
+      expect(page).to have_content("Age: 50")
+    end 
+
+    within "#actor-#{@actor4.id}" do
+      expect(page).to have_content("Name: Meryl Streep")
+      expect(page).to have_content("Age: 70")
+    end 
+
+    expect(@actor3.name).to appear_before(@actor1.name)
+    expect(@actor1.name).to appear_before(@actor4.name)
   end
 
   it "shows the average age for all actors in that movie" do
+    visit "/movies/#{@movie1.id}"
 
+    within "#average_age" do
+      expect(page).to have_content("Average Age of Actors in this Movie: 60")
+    end 
   end
 end
