@@ -12,3 +12,10 @@ Actors:
 <div id="average_age">
 Average Age of Actors in this Movie: <%= @movie.actors.average_age %>
 </div>
+
+<%= form_with url: "/movie_actors", method: :post, data: {turbo: false} do |form| %>
+  <%= form.label "Add an Actor" %>
+  <%= form.text_area :actor_id %>
+  <%= form.hidden_field :movie_id, value: "#{@movie.id}" %>
+  <%= form.submit "Submit" %>
+<% end %>
