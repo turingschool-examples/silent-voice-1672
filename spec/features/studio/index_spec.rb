@@ -13,6 +13,7 @@ RSpec.describe "the studios index" do
     @movie3 = Movie.create(title: "Die Hard", creation_year: 1990, genre: "action")
     @movie4 = Movie.create(title: "Lord of the Rings", creation_year: 2003, genre: "epic")
     @movie5 = Movie.create(title: "Batman", creation_year: 2001, genre: "superhero")
+    @movie6 = Movie.create(title: "Dune 2", creation_year: 2024, genre: "epic")
 
     @studio1.movies << [@movie1, @movie5]
     @studio2.movies << [@movie2, @movie3, @movie4]
@@ -38,6 +39,27 @@ RSpec.describe "the studios index" do
   end
 
   it "shows the movies from that studio, including the title, creation year and genre" do
+    visit "/studios"
 
+    within "#studio-#{@studio1.id}" do
+      expect(page).to have_content("Title: Toy Story")
+      expect(page).to have_content("Year: 1995")
+      expect(page).to have_content("Genre: animation")
+      expect(page).to have_content("Title: Batman")
+      expect(page).to have_content("Year: 2001")
+      expect(page).to have_content("Genre: superhero")
+    end
+
+    within "#studio-#{@studio2.id}" do
+    expect(page).to have_content("Title: Up")
+    expect(page).to have_content("Year: 2003")
+    expect(page).to have_content("Genre: animation")
+    expect(page).to have_content("Title: Die Hard")
+    expect(page).to have_content("Year: 1990")
+    expect(page).to have_content("Genre: action")
+    expect(page).to have_content("Title: Lord of the Rings")
+    expect(page).to have_content("Year: 2003")
+    expect(page).to have_content("Genre: epic")
+    end
   end
 end
