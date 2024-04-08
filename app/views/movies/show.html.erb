@@ -1,0 +1,24 @@
+<div class="page-title">Information About <%= @movie.title %></div>
+
+<div class="movie-info-list">
+  <div class="movie-info">Created in <%= @movie.creation_year %></div>
+  <div class="movie-info">Genre: <%= @movie.genre %></div>
+  <div class="movie-info" id="average-actor-age">Average actor age: <%= @movie.average_actor_age %></div>
+  <div id="actors-list-header">Actors:</div>
+  <div id="actors-list">
+    <% @movie.actors_ordered_by_age.each do |actor| %>
+      <div class="actors-list-item">
+        <div class="actor-name"><%= actor.name %></div>
+        <div class="actor-age">Age: <%= actor.age %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= form_with url: "/movie_actors", local: true, data: { turbo: false }, method: :post do |form|  %>
+  <div class="movie-actor-header">Add an Actor to This Movie</div>
+  <%= form.hidden_field :movie_id, value: @movie.id %>
+  <%= form.label :actor_id, "Actor ID:"  %>
+  <%= form.text_field :actor_id %>
+  <%= form.submit "Add" %>
+<% end %>
