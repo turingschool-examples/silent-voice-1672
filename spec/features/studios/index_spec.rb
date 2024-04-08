@@ -9,7 +9,6 @@ RSpec.describe "Studio Index" do
     @water_b = @universal.movies.create!(title: "Water Boy", creation_year: 1997, genre: "Comedy")
     @burger = @nickelodeon.movies.create!(title: "Burger movie", creation_year: 2003, genre: "Comedy")
     @scooby = @nickelodeon.movies.create!(title: "Scooby Doo", creation_year: 2017, genre: "Mystery")
-
   end
   describe "User Story 1" do 
     it 'lists all studios including their name and location' do
