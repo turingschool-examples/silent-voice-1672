@@ -1,0 +1,12 @@
+<h1>Studios</h1>
+<% @studios.each do |studio| %>
+  <%= studio.name %>
+  <%= studio.location %>
+    <% studio.movies.each do |movie| %>
+      <%= movie.title %>
+      <%= movie.creation_year %>
+      <%= movie.genre %>
+    <% end %>
+<% end %>
+
+<%# If i have time i can try to refactor lines 5-9 %>
