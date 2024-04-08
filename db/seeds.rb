@@ -19,3 +19,4 @@
 @actor_1 = @movie_1.actors.create!(name: 'Chloe Grace Moretz', age: 27)
 @actor_2 = @movie_1.actors.create!(name: 'Omari Hardwick', age: 50)
 @actor_3 = @movie_2.actors.create!(name: 'Michael Cera', age: 35)
+@actor_4 = @movie_5.actors.create!(name: 'Chadwick Boseman', age: 55)

@@ -8,3 +8,9 @@
 <div id="average age of actors">
   <h2><%= @movie.actors.average_age %></h2>
 </div>
+
+<%= form_with url: "/movies/#{@movie.id}", method: :patch, data: {turbo: false} do |f| %>
+  <%= f.label :actor_id, "Add Actor(tress) ID:" %><br>
+  <%= f.number_field :actor_id %><br>
+  <%= f.submit "Submit Actor ID" %>
+<% end %>

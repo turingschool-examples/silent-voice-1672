@@ -6,6 +6,7 @@ RSpec.describe "Movie Show Page", type: :feature do
     @movie_1 = @us.movies.create!(title: 'Kick-Ass', creation_year: 2010, genre: "Comedy")
     @actor_2 = @movie_1.actors.create!(name: 'Omari Hardwick', age: 50)
     @actor_1 = @movie_1.actors.create!(name: 'Chloe Grace Moretz', age: 27)
+    @actor_3 = Actor.create!(name: 'Chadwick Boseman', age: 55)
   end
 
   describe "show page" do
@@ -27,6 +28,17 @@ RSpec.describe "Movie Show Page", type: :feature do
       visit "/movies/#{@movie_1.id}"
 
       expect(page).to have_content(38.5)
+    end
+
+    it "has a form to input actor ID and add it to the movie" do
+      visit "/movies/#{@movie_1.id}"
+      
+      expect(page).to_not have_content(@actor_3.name)
+      save_and_open_page
+      fill_in "Add Actor(tress) ID:", with: "#{@actor_3.id}"
+      click_button "Submit Actor ID"
+
+      expect(page).to have_content(@actor_3.name)
     end
   end
 end
