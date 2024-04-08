@@ -16,3 +16,10 @@
   </ul>
   <li>Average age of all actors: <%= @average_age_of_actors %></li>
 </ol>
+
+<h2>Add Actor</h2>
+<%= form_with(url: movie_path(@movie), data: { turbo: false }) do |form| %>
+  <%= form.label :actor_id, "Actor ID" %>
+  <%= form.text_field :actor_id %>
+  <%= form.submit "Add Actor" %>
+<% end %>
