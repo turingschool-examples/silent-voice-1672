@@ -12,15 +12,15 @@ RSpec.describe "Movie Show Page", type: :feature do
     it "shoes the movie's title, creation year, and genre" do
       visit "/movies/#{@movie_1.id}"
 
-      expect(page).to have_content(@movie_1.name)
+      expect(page).to have_content(@movie_1.title)
       expect(page).to have_content(@movie_1.creation_year)
       expect(page).to have_content(@movie_1.genre)
     end
 
     it "lists all of its actors youngest to oldest" do
       visit "/movies/#{@movie_1.id}"
-
-      expect(@actor_1).to appear_before(@actor_2)
+      save_and_open_page
+      expect(@actor_1.name).to appear_before(@actor_2.name)
     end
 
     it "shows the average age of the movie's actors" do
