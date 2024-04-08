@@ -16,19 +16,23 @@ RSpec.describe "Movie Show Page" do
     it 'shows the movies title, creation year, and genre' do
       visit "/movies/#{@godfather.id}"
 
-      
+      expect(page).to have_content("Title: The Godfather")
+      expect(page).to have_content("Creation Year: 1972")
+      expect(page).to have_content("Genre: Crime")
     end
 
     it 'has a list of all its actors from youngest to oldest' do
       visit "/movies/#{@godfather.id}"
 
-
+      expect("Al Pacino").to appear_before("Marlon Brando")
+      expect("Marlon Brando").to appear_before("Robert")
+      expect("Robert").to_not appear_before("Pacino")
     end
 
     it 'shows the average age of all of the movies actors' do
       visit "/movies/#{@godfather.id}"
 
-
+      expect(page).to have_content("Average age of all actors: 50.0")
     end
   end
 end
