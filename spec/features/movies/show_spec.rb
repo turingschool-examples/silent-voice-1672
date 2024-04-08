@@ -6,7 +6,7 @@ RSpec.describe "movie show page" do
       name: "Warner Bros.",
       location: "Burbank, CA"
     )
-    @movie = @studio1.movies.create!(
+    @movie = @studio.movies.create!(
       title: "Dune",
       creation_year: "2021",
       genre: "Action/Adventure"
