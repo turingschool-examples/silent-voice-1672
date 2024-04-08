@@ -18,7 +18,7 @@ RSpec.describe "Movie Show" do
   end
 
   describe "User Story 2" do
-    it '' do
+    it 'shows movie attributes, lists actors from youngest to olders, and shows actors average age' do
       # As a user,
       # When I visit a movie's show page.
       visit "movies/#{@water_b.id}"
@@ -30,7 +30,7 @@ RSpec.describe "Movie Show" do
       within ".actors" do
         expect(@woman.name).to appear_before(@adam.name)
       end
-      expect(page).to have_content("#{@water_b.title} actors average age: 26")
+      expect(page).to have_content("Movie actors average age: 26")
       # And I see the average age of all of the movie's actors
     end
   end
