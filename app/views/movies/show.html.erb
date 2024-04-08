@@ -1,0 +1,6 @@
+<h1><%= @movie.title %></h1>
+
+Creation Year: <%= @movie.creation_year %><br>
+Genre: <%= @movie.genre %><br>
+
+Actors from Youngest to Oldest: <%= @movie.actors.sorted_by_age %>
