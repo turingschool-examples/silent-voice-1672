@@ -1,11 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Studio, type: :model do
-  describe "relationships" do
-    it { should have_many(:movies) }
-    it { should have_many(:actors).through(:movies) }
-  end
-
+RSpec.describe "the studios show page" do
   before(:each) do
     @studio_1 = Studio.create!(name: 'Studio Name 1', location: 'Location 1')
     @studio_2 = Studio.create!(name: 'Studio Name 2', location: 'Location 2')
@@ -24,9 +19,22 @@ RSpec.describe Studio, type: :model do
     @movie_2.actors << @actor_5
   end
 
-  describe '#unique_actors_list' do
-    it 'returns a unique list of all actors that was in one of its movies' do
-      expect(@studio_1.unique_actors_list).to eq([@actor_1, @actor_2, @actor_3, @actor_5])
+  describe 'Extension 1' do
+    it 'shows the studios name and location and has a unique list of all actors that have worked on any of its movies' do
+      visit "/studios/#{@studio_1.id}"
+
+      expect(page).to have_content('Studio Name 1')
+      expect(page).to have_content('Location: Location 1')
+
+      within '#studio_actors' do
+      # I didn't know how to test that actor name 1 didn't appear twice. Would be curious if there is a way.
+        expect(page).to have_content('Actor Name 1')
+        expect(page).to have_content('Actor Name 2')
+        expect(page).to have_content('Actor Name 3')
+        expect(page).to have_content('Actor Name 5')
+
+        expect(page).to_not have_content('Actor Name 4')
+      end
     end
   end
 end
