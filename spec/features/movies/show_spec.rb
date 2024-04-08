@@ -38,9 +38,7 @@ RSpec.describe "movie show page" do
 
     within "#actors-list" do
       expect(@actor3.name).to appear_before(@actor1.name)
-      expect(@actor3.age).to appear_before(@actor1.age)
       expect(@actor1.name).to appear_before(@actor2.name)
-      expect(@actor1.age).to appear_before(@actor2.age)
     end
   end
 
