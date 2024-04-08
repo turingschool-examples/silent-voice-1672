@@ -14,6 +14,6 @@ godfather = Movie.create(title: "The Godfather", creation_year: "1972", genre: "
 shawshank = Movie.create(title: "The Shawshank Redemption", creation_year: "1994", genre: "Drama", studio_id: 2)
 inception = Movie.create(title: "Inception", creation_year: "2010", genre: "Sci-Fi", studio_id: 3)
 
-tony = Character.create(name: "Tony Stark", role: "Main character", movie_id: 1)
-bruce = Character.create(name: "Bruce Wayne", role: "Main character", movie_id: 2)
-dom = Character.create(name: "Dom Cobb", role: "Main character", movie_id: 3)
+tony = Actor.create(name: "Tony Stark", role: "Main character", age: 35, movie_id: 1)
+bruce = Actor.create(name: "Bruce Wayne", role: "Main character", age: 40, movie_id: 2)
+dom = Actor.create(name: "Dom Cobb", role: "Main character", age: 45, movie_id: 3)
