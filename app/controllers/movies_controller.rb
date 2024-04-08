@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def show
-    @movie = Movie.find(params[:id])
+    @actor = Actor.find(params[:age])
   end
 
 end
