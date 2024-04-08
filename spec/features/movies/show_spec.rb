@@ -66,6 +66,8 @@ RSpec.describe "movie show page" do
   it "can add an existing actor to the movie" do
     visit "movies/#{@movie.id}"
 
+    expect(page).to_not have_content(@actor4.name)
+
     fill_in "actor_id", with: @actor4.id
     click_button "Add"
     expect(page).to have_current_path("/movies/#{@movie.id}")
