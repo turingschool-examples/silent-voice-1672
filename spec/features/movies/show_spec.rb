@@ -23,6 +23,10 @@ RSpec.describe "movie show page" do
       name: "Zendaya Coleman",
       age: 27
     )
+    @actor4 = Actor.create!(
+      name: "Oscar Isaac",
+      age: 45
+    )
   end
 
   it "shows the movie's title, creation year, and genre" do
@@ -48,5 +52,23 @@ RSpec.describe "movie show page" do
     within "#average-actor-age" do
       expect(page).to have_content(31.67)
     end
+  end
+
+  it "has a form to add an actor to the movie" do
+    visit "movies/#{@movie.id}"
+
+    expect(page).to have_content("Add an Actor to This Movie")
+    expect(find("form")).to have_content("Actor ID:")
+    expect(find("form")).to have_field("actor_id")
+    expect(find("form")).to have_button("Add")
+  end
+
+  it "can add an existing actor to the movie" do
+    visit "movies/#{@movie.id}"
+
+    fill_in "actor_id", with: @actor4.id
+    click_button "Add"
+    expect(page).to have_current_path("/movies/#{@movie.id}")
+    expect(page).to have_content(@actor4.name)
   end
 end
