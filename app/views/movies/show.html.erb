@@ -13,8 +13,8 @@
 
 <h3>Add an actor to this movie</h3>
 <%=form_with url: "/movies/#{@movie.id}/actors", method: :post, local: true do |form|%>
-  <%= form.label :id, "Actor ID:" %>
-  <%= form.text_field :id %>
+  <%= form.label :actor_id, "Actor ID:" %>
+  <%= form.text_field :actor_id %>
 
   <%= form.submit "Add Actor" %>
 <%end%>
