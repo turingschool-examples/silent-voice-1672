@@ -1,3 +1,9 @@
 <h1> Studio: <%= @studio.name %> </h1>
 Location: <%= @studio.location %> </br>
 
+Actors:
+<ul> <% @studio.distinct_actors.each do |actor| %>
+  <div id="actor-<%= actor.id %>">
+  Name: <%= actor.name %>, Age: <%= actor.age %> 
+  </div>
+<% end %> </ul>
