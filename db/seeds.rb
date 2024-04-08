@@ -12,3 +12,9 @@
 @up = @universal.movies.create!(title: "Up", creation_year: 2013)
 @superman = @marvel.movies.create!(title: "Superman", creation_year: 2007)
 @ironman = @marvel.movies.create!(title: "Ironman", creation_year: 2005)
+
+@meryl = Actor.create!(name: "Meryl Streep", age: 73)
+@tom = Actor.create!(name: "Tom Hanks", age: 68)
+@tim = Actor.create!(name: "Tim Allen", age: 63)
+
+@ts.actors << [@meryl, @tom]

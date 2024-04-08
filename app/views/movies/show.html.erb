@@ -3,4 +3,18 @@
 Creation Year: <%= @movie.creation_year %><br>
 Genre: <%= @movie.genre %><br>
 
-Actors from Youngest to Oldest: <%= @movie.actors.sorted_by_age %>
+Actors from Youngest to Oldest: <%@movie.actors.sorted_by_age.each do |actor| %>
+  <%= actor.name %>,
+<% end %><br>
+
+Average Age: <%= @movie.actors.average_age %>
+
+<h3>Add Actor: </h3>
+<%= form_with url: "/movies/#{@movie.id}/actors", method: :post, data: {turbo: false}, local: true do |f| %>
+	<%= f.label :actor, "Name" %>
+	<%= f.text_field :actor %><br>
+	<%= f.label :age, "Age" %>
+	<%= f.text_field :age %><br>
+	
+	<%= f.submit "Submit Actor"%>
+<% end %>

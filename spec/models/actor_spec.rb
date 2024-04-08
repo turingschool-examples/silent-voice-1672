@@ -8,7 +8,7 @@ RSpec.describe Actor, type: :model do
 
   describe "class methods" do
     describe "#sorted_by_age" do
-      it "sorts actors from youngest to oldest" do
+      before do
         @universal = Studio.create!(name: "Universal Studios", location: "Hollywood")
 
         @ts = @universal.movies.create!(title: "Toy Story", creation_year: 1995, genre: "animation")
@@ -17,7 +17,15 @@ RSpec.describe Actor, type: :model do
         @tom = Actor.create!(name: "Tom Hanks", age: 68)
         @tim = Actor.create!(name: "Tim Allen", age: 63)
 
+        @ts.actors << [@meryl, @tom, @tim]
+      end
+
+      it "sorts actors from youngest to oldest" do
         expect(Actor.sorted_by_age).to eq([@tim, @tom, @meryl])
+      end
+
+      it "gets average age of all actors" do
+        expect(Actor.average_age).to eq(68)
       end
     end
   end
