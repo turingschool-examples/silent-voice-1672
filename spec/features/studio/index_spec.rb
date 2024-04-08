@@ -51,15 +51,17 @@ RSpec.describe "the studios index" do
     end
 
     within "#studio-#{@studio2.id}" do
-    expect(page).to have_content("Title: Up")
-    expect(page).to have_content("Year: 2003")
-    expect(page).to have_content("Genre: animation")
-    expect(page).to have_content("Title: Die Hard")
-    expect(page).to have_content("Year: 1990")
-    expect(page).to have_content("Genre: action")
-    expect(page).to have_content("Title: Lord of the Rings")
-    expect(page).to have_content("Year: 2003")
-    expect(page).to have_content("Genre: epic")
+      expect(page).to have_content("Title: Up")
+      expect(page).to have_content("Year: 2003")
+      expect(page).to have_content("Genre: animation")
+      expect(page).to have_content("Title: Die Hard")
+      expect(page).to have_content("Year: 1990")
+      expect(page).to have_content("Genre: action")
+      expect(page).to have_content("Title: Lord of the Rings")
+      expect(page).to have_content("Year: 2003")
+      expect(page).to have_content("Genre: epic")
     end
+
+    expect(page).to_not have_content("Title: Dune 2")
   end
 end

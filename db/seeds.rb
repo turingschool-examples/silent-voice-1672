@@ -12,11 +12,12 @@ Actor.destroy_all
 @studio1 = Studio.create(name: "MGM", location: "Hollywood")
 @studio2 = Studio.create(name: "Universal", location: "Florida")
 
-@movie1 = Movie.create(name: "Toy Story", creation_year: 1995, genre: "animation")
-@movie2 = Movie.create(name: "Up", creation_year: 2003, genre: "animation")
-@movie3 = Movie.create(name: "Die Hard", creation_year: 1990, genre: "action")
-@movie4 = Movie.create(name: "Lord of the Rings", creation_year: 2003, genre: "epic")
-@movie5 = Movie.create(name: "Batman", creation_year: 2001, genre: "superhero")
+@movie1 = Movie.create(title: "Toy Story", creation_year: 1995, genre: "animation")
+@movie2 = Movie.create(title: "Up", creation_year: 2003, genre: "animation")
+@movie3 = Movie.create(title: "Die Hard", creation_year: 1990, genre: "action")
+@movie4 = Movie.create(title: "Lord of the Rings", creation_year: 2003, genre: "epic")
+@movie5 = Movie.create(title: "Batman", creation_year: 2001, genre: "superhero")
+@movie6 = Movie.create(title: "Dune 2", creation_year: 2024, genre: "epic")
 
 @studio1.movies << [@movie1, @movie5]
 @studio2.movies << [@movie2, @movie3, @movie4]
