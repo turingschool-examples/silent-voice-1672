@@ -35,7 +35,7 @@ RSpec.describe "the studio show" do
 
   it "shows a unique list of all the actors that have worked on any of this studio's movies" do
     visit "/studios/#{@studio2.id}"
-    save_and_open_page
+
     expect(page).to have_content(@actor1.name, count: 1)
     expect(page).to have_content(@actor2.name, count: 1)
     expect(page).to have_content(@actor4.name, count: 1)
