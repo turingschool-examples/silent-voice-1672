@@ -28,5 +28,9 @@ RSpec.describe Actor, type: :model do
 
       expect(expected_sorted_actors).to eq(sorted_actors)
     end
+
+    it "can return the average age of all actors" do
+      expect(Actor.average_age).to eq 61.5
+    end
   end
 end
