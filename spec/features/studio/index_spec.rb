@@ -15,7 +15,6 @@ RSpec.describe 'studio index page', type: :feature do
       end
       it 'displays each studios attributes ' do
         within "#studio-#{@universal.id}" do
-        save_and_open_page
           expect(page).to have_content(@universal.name)
           expect(page).to have_content(@universal.location)
         end
