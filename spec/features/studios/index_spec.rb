@@ -43,6 +43,29 @@ RSpec.describe "the studios index page" do
         expect(page).to_not have_content('Creation Year: 1974')
         end
       end
+
+      within "#studio_#{@studio_2.id}_info" do
+        expect(page).to have_content('Studio Name 2')
+        expect(page).to have_content('Location: Location 2')
+
+        within "#studio_#{@studio_2.id}_movies" do
+
+          within "#studio_#{@studio_2.id}_movie_#{@movie_4.id}" do
+            expect(page).to have_content('Title: Movie Title 4')
+            expect(page).to have_content('Creation Year: 1956')
+            expect(page).to have_content('Genre: Movie Genre 3')
+          end
+
+          within "#studio_#{@studio_2.id}_movie_#{@movie_5.id}" do
+            expect(page).to have_content('Title: Movie Title 5')
+            expect(page).to have_content('Creation Year: 1974')
+            expect(page).to have_content('Genre: Movie Genre 1')
+          end
+
+        expect(page).to_not have_content('Title: Movie Title 1')
+        expect(page).to_not have_content('Creation Year: 2000')
+        end
+      end
     end
   end
 end
