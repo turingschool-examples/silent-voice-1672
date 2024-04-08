@@ -5,9 +5,16 @@
 
 <h2>Actors in movie</h2>
 <section class='actors'>
-    <% @movie.actors_age_order.each do |actor| %>
-        <%= actor.name %>
-        <%end%>
+  <% @movie.actors_age_order.each do |actor| %>
+    <%= actor.name %>
+    <%end%>
 </section>
 <h3>Movie actors average age: <%= @movie.actors_avg_age %></h3>
 
+<h3>Add an actor to this movie</h3>
+<%=form_with url: "/movies/#{@movie.id}/actors", method: :post, local: true do |form|%>
+  <%= form.label :id, "Actor ID:" %>
+  <%= form.text_field :id %>
+
+  <%= form.submit "Add Actor" %>
+<%end%>
