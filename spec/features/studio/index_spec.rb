@@ -25,6 +25,7 @@ RSpec.describe "the studios index" do
     # And under each studio I see all of the studio's movies
     # including the movie's title, creation year, and genre
   it "shows each studio's name and location" do
+    require 'pry'; binding.pry
     visit "/studios"
 
     within "#studio-#{@studio1.id}" do
