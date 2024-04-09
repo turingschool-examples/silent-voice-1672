@@ -3,3 +3,8 @@
 <br>Creation Year: <%= @movie.creation_year %>
 <br>Genre: <%= @movie.genre %>
 
+<p><%= form_with url: "/artists", method: :post, data: { turbo: false } do |form| %>
+  <%= form.label :Actor_Submission %>
+  <br><%= form.text_field :actor %>
+  <%= form.submit 'Create Actor' %>
+<% end %></p>

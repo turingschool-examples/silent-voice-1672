@@ -17,6 +17,8 @@ RSpec.describe Movie do
 
       visit "/movies/#{tony.movie_id}"
 
+      save_and_open_page
+
       expect(page).to have_content(godfather.title)
       expect(page).to have_content(godfather.creation_year)
       expect(page).to have_content(godfather.genre)
